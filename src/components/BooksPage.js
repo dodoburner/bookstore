@@ -1,7 +1,9 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
 import Header from './Header';
 import Book from '../Book';
+import Form from './Form';
 
 const BooksPage = () => {
   const books = [
@@ -10,7 +12,16 @@ const BooksPage = () => {
       title: 'The Hunger Games',
       id: uuidv4(),
     },
+    {
+      author: 'Me',
+      title: 'Best Book Ever',
+      id: uuidv4(),
+    },
   ];
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  // }
 
   return (
     <div>
@@ -20,6 +31,7 @@ const BooksPage = () => {
           <Book key={book.id} author={book.author} title={book.title} />
         ))}
       </main>
+      <Form />
     </div>
   );
 };
