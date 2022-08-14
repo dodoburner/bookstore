@@ -3,7 +3,7 @@ const REMOVE = 'bookstore/books/REMOVE';
 
 export default function booksReducer(state = [], action) {
   switch (action.type) {
-    case ADD: return [...state].push(action.book);
+    case ADD: return [...state, action.book];
     case REMOVE: return [...state].filter((book) => book.id !== action.id);
     default: return state;
   }
@@ -12,13 +12,13 @@ export default function booksReducer(state = [], action) {
 export function addBook(book) {
   return {
     type: ADD,
-    book,
+    book: book,
   };
 }
 
 export function removeBook(id) {
   return {
     type: REMOVE,
-    id,
+    id: id,
   };
 }

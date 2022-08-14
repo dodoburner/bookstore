@@ -5,7 +5,7 @@ import crudReducer from './books/books';
 import categoriesReducer from './categories/categories';
 
 const rootReducer = combineReducers({
-  crud: crudReducer,
+  books: crudReducer,
   categories: categoriesReducer,
 });
 
