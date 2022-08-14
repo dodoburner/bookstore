@@ -1,6 +1,6 @@
 const STATUS = "bookstore/categories/STATUS";
 
-export default function reducer(state = [], action) {
+export default function categoriesReducer(state = [], action) {
   if (action.type === STATUS) {
     return (state = action.text);
   } else {
