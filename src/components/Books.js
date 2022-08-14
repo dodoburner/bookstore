@@ -1,24 +1,10 @@
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
-
-import store from '../redux/configureStore';
+import { useSelector } from 'react-redux/es/exports';
 import Book from './Book';
 import Form from './Form';
 
 const Books = () => {
-  console.log(store.getState());
-  const books = [
-    {
-      author: 'Suzanne Collins',
-      title: 'The Hunger Games',
-      id: uuidv4(),
-    },
-    {
-      author: 'Me',
-      title: 'Best Book Ever',
-      id: uuidv4(),
-    },
-  ];
+  const books = useSelector((state) => state.books);
 
   return (
     <div>
