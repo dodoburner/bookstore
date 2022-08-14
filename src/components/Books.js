@@ -1,10 +1,12 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import store from '../redux/configureStore';
 import Book from './Book';
 import Form from './Form';
 
 const Books = () => {
+  console.log(store.getState());
   const books = [
     {
       author: 'Suzanne Collins',

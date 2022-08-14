@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const STATUS = 'bookstore/categories/STATUS';
 
 export default function categoriesReducer(state = [], action) {

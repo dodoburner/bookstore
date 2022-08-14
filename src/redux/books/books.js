@@ -1,7 +1,7 @@
-const ADD = 'bookstore/crud/ADD';
-const REMOVE = 'bookstore/crud/REMOVE';
+const ADD = 'bookstore/books/ADD';
+const REMOVE = 'bookstore/books/REMOVE';
 
-export default function crudReducer(state = [], action) {
+export default function booksReducer(state = [], action) {
   switch (action.type) {
     case ADD: return [...state].push(action.book);
     case REMOVE: return [...state].filter((book) => book.id !== action.id);
