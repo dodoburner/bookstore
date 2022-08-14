@@ -4,7 +4,6 @@ import { removeBook } from "../redux/books/books";
 import store from "../redux/configureStore";
 
 const Book = ({ author, title, id }) => {
-
   const handleRemove = (id) => {
     store.dispatch(removeBook(id));
   };
@@ -13,9 +12,12 @@ const Book = ({ author, title, id }) => {
     <div>
       <h3>{title}</h3>
       <p>{author}</p>
-      <button onClick={() => {
-        handleRemove(id)
-      }} type="button">
+      <button
+        onClick={() => {
+          handleRemove(id);
+        }}
+        type="button"
+      >
         Remove
       </button>
     </div>

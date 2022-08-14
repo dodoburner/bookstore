@@ -8,13 +8,18 @@ const Form = () => {
     event.preventDefault();
     const title = document.getElementsByName("title")[0].value;
     const author = document.getElementsByName("author")[0].value;
-    const book = {
-      title,
-      author,
-      id: uuidv4(),
-    };
 
-    store.dispatch(addBook(book));
+    if (title.trim() && author.trim()) {
+      const book = {
+        title,
+        author,
+        id: uuidv4(),
+      };
+
+      store.dispatch(addBook(book));
+      document.getElementsByName("title")[0].value = '';
+      document.getElementsByName("author")[0].value = '';
+    }
   };
 
   return (
