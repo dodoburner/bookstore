@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Book from './Book';
 import Form from './Form';
 
-const BooksPage = () => {
+const Books = () => {
   const books = [
     {
       author: 'Suzanne Collins',
@@ -30,4 +30,4 @@ const BooksPage = () => {
   );
 };
 
-export default BooksPage;
+export default Books;
