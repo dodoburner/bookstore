@@ -1,6 +1,6 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
-import { addBook, removeBook } from "../redux/books/books";
+import { addBook } from "../redux/books/books";
 import store from "../redux/configureStore";
 
 const Form = () => {
