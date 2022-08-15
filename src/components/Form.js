@@ -1,9 +1,11 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux/es/exports";
 import { addBook } from "../redux/books/books";
-import store from "../redux/configureStore";
 
 const Form = () => {
+  const dispatch = useDispatch();
+
   const submitHandler = (event) => {
     event.preventDefault();
     const title = document.getElementsByName("title")[0].value;
@@ -16,7 +18,7 @@ const Form = () => {
         id: uuidv4(),
       };
 
-      store.dispatch(addBook(book));
+      dispatch(addBook(book));
       document.getElementsByName("title")[0].value = '';
       document.getElementsByName("author")[0].value = '';
     }
