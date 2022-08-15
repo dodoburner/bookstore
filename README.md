@@ -2,7 +2,7 @@
 
 # Bookstore
 
-> A website that allows you to: display a list of books, add a book, and remove a seleceted book.
+> A website that allows you to: display a list of books, add a book, and remove a selected book.
 
 ## Built With
 
@@ -10,7 +10,7 @@
 
 ## Live Demo
 
-[Live Demo Link]()
+Coming soon...
 
 
 ## Getting Started
