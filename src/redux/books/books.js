@@ -32,8 +32,7 @@ export function removeBook(id) {
   };
 }
 
-export async function fetchBooks(dispatch, getState) {
-  const res = await axios.get("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/pArPMkW4SXIuhfhkSqdg/books");
+export async function fetchBooks(dispatch) {
+  const res = await axios.get("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books");
   dispatch({ type: FETCH_BOOKS, books: res.data });
-  console.log(getState());
 }
