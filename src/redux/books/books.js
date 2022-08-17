@@ -1,24 +1,6 @@
-import { v4 as uuidv4 } from "uuid";
-
 const ADD = "bookstore/books/ADD";
 const REMOVE = "bookstore/books/REMOVE";
-const initialState = [
-  {
-    title: "Harry Potter",
-    author: "JK Rowling",
-    id: uuidv4(),
-  },
-  {
-    title: "Picture of Dorian Gray",
-    author: "Oscar Wilde",
-    id: uuidv4(),
-  },
-  {
-    title: "Mickey Mouse",
-    author: "Walt Disney",
-    id: uuidv4(),
-  },
-];
+const initialState = [];
 
 export default function booksReducer(state = initialState, action) {
   switch (action.type) {
