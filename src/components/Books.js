@@ -4,17 +4,17 @@ import Book from "./Book";
 import Form from "./Form";
 
 const Books = () => {
-  const books = useSelector((state) => state.books);
-
+  const books = useSelector((state) => Object.entries(state.books));
+  console.log(books);
   return (
     <div>
       <main>
         {books.map((book) => (
           <Book
-            key={book.id}
-            id={book.id}
-            author={book.author}
-            title={book.title}
+            key={book[0]}
+            id={book[0]}
+            author={book[1][0].author}
+            title={book[1][0].title}
           />
         ))}
       </main>
