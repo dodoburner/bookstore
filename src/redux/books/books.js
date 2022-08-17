@@ -12,16 +12,31 @@ export default function booksReducer(state = initialState, action) {
     case ADD:
       return [...state, action.book];
     case REMOVE:
-      return state.filter((book) => book.id !== action.id);
+      return state.filter((book) => book[0] !== action.book[0]);
     default:
       return state;
   }
 }
 
 export function addBook(book) {
-  return {
-    type: ADD,
-    book,
+  return async function addBookThunk(dispatch) {
+    await axios.post("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books", {
+      item_id: book.id,
+      title: book.title,
+      author: book.author,
+      category: 'NAN',
+    }).then((res) => console.log(res));
+    dispatch({
+      type: ADD,
+      book: [
+        book.id,
+        [{
+          author: book.author,
+          title: book.title,
+          category: 'NAN',
+        }],
+      ],
+    });
   };
 }
 
@@ -34,5 +49,5 @@ export function removeBook(id) {
 
 export async function fetchBooks(dispatch) {
   const res = await axios.get("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books");
-  dispatch({ type: FETCH_BOOKS, books: res.data });
+  dispatch({ type: FETCH_BOOKS, books: Object.entries(res.data) });
 }
