@@ -1,3 +1,4 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const ADD = "bookstore/books/ADD";
@@ -12,15 +13,15 @@ export default function booksReducer(state = initialState, action) {
     case ADD:
       return [...state, action.book];
     case REMOVE:
-      return state.filter((book) => book[0] !== action.book[0]);
+      return state.filter((book) => book[0] !== action.id);
     default:
       return state;
   }
 }
 
 export function addBook(book) {
-  return async function addBookThunk(dispatch) {
-    await axios.post("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books", {
+  return function addBookThunk(dispatch) {
+    axios.post("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books", {
       item_id: book.id,
       title: book.title,
       author: book.author,
@@ -41,9 +42,12 @@ export function addBook(book) {
 }
 
 export function removeBook(id) {
-  return {
-    type: REMOVE,
-    id,
+  return function remoeBookThunk(dispatch) {
+    axios.delete(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books/${id}`);
+    dispatch({
+      type: REMOVE,
+      id,
+    });
   };
 }
 
@@ -51,3 +55,11 @@ export async function fetchBooks(dispatch) {
   const res = await axios.get("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books");
   dispatch({ type: FETCH_BOOKS, books: Object.entries(res.data) });
 }
+
+// export const getBooks = createAsyncThunk(
+//   "bookstore/books/FETCH_BOOKS",
+//   async () => {
+//     const res = await axios.get("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books");
+//     return Object.entries(res.data)
+//   }
+// )
