@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux/es/exports";
 import { addBook } from "../redux/books/books";
@@ -18,6 +19,12 @@ const Form = () => {
         id: uuidv4(),
       };
 
+      axios.post("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books", {
+        item_id: book.id,
+        title: book.title,
+        author: book.author,
+        category: 'Fiction',
+      }).then((res) => console.log(res));
       dispatch(addBook(book));
       document.getElementsByName("title")[0].value = '';
       document.getElementsByName("author")[0].value = '';
