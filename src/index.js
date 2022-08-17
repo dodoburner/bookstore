@@ -9,7 +9,7 @@ import { fetchBooks } from './redux/books/books';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-store.dispatch(fetchBooks);
+store.dispatch(fetchBooks());
 
 root.render(
   <React.StrictMode>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const ADD = "bookstore/books/ADD";
 const REMOVE = "bookstore/books/REMOVE";
@@ -7,27 +8,27 @@ const initialState = [];
 
 export default function booksReducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_BOOKS:
-      return action.books;
-    case ADD:
-      return [...state, action.book];
-    case REMOVE:
-      return state.filter((book) => book[0] !== action.id);
+    case 'bookstore/books/FETCH_BOOKS/fulfilled':
+      return action.payload.books;
+    case 'bookstore/books/ADD/fulfilled':
+      return [...state, action.payload.book];
+    case 'bookstore/books/REMOVE/fulfilled':
+      return state.filter((book) => book[0] !== action.payload.id);
     default:
       return state;
   }
 }
 
-export function addBook(book) {
-  return function addBookThunk(dispatch) {
-    axios.post("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books", {
+export const addBook = createAsyncThunk(
+  ADD,
+  async (book) => {
+    await axios.post("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books", {
       item_id: book.id,
       title: book.title,
       author: book.author,
       category: 'NAN',
     });
-    dispatch({
-      type: ADD,
+    return {
       book: [
         book.id,
         [{
@@ -36,21 +37,22 @@ export function addBook(book) {
           category: 'NAN',
         }],
       ],
-    });
-  };
-}
+    };
+  },
+);
 
-export function removeBook(id) {
-  return function remoeBookThunk(dispatch) {
-    axios.delete(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books/${id}`);
-    dispatch({
-      type: REMOVE,
-      id,
-    });
-  };
-}
+export const removeBook = createAsyncThunk(
+  REMOVE,
+  async (id) => {
+    await axios.delete(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books/${id}`);
+    return { id };
+  },
+);
 
-export async function fetchBooks(dispatch) {
-  const res = await axios.get("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books");
-  dispatch({ type: FETCH_BOOKS, books: Object.entries(res.data) });
-}
+export const fetchBooks = createAsyncThunk(
+  FETCH_BOOKS,
+  async () => {
+    const res = await axios.get("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books");
+    return { books: Object.entries(res.data) };
+  },
+);
