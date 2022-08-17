@@ -1,4 +1,3 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const ADD = "bookstore/books/ADD";
@@ -26,7 +25,7 @@ export function addBook(book) {
       title: book.title,
       author: book.author,
       category: 'NAN',
-    }).then((res) => console.log(res));
+    });
     dispatch({
       type: ADD,
       book: [
@@ -55,11 +54,3 @@ export async function fetchBooks(dispatch) {
   const res = await axios.get("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books");
   dispatch({ type: FETCH_BOOKS, books: Object.entries(res.data) });
 }
-
-// export const getBooks = createAsyncThunk(
-//   "bookstore/books/FETCH_BOOKS",
-//   async () => {
-//     const res = await axios.get("https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Q1QN0NorrFflxgwf6FZY/books");
-//     return Object.entries(res.data)
-//   }
-// )
