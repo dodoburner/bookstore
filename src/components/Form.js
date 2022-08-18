@@ -2,6 +2,7 @@ import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux/es/exports";
 import { addBook } from "../redux/books/books";
+import './Form.css';
 
 const Form = () => {
   const dispatch = useDispatch();

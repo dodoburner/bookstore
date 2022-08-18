@@ -1,0 +1,36 @@
+header {
+  display: flex;
+  padding: 1.8rem 6.2rem;
+  font-family: 'Montserrat', sans-serif;
+  border-bottom: solid 1px #e8e8e8;
+  background-color: white;
+}
+
+.logo {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #0290ff;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.6rem;
+  margin-left: 3rem;
+  font-size: 0.813rem;
+  letter-spacing: 1.9px;
+  color: #121212;
+}
+
+.oval {
+  border: solid 1px #e8e8e8;
+  padding: 12px 15px;
+  border-radius: 50%;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.fa-user {
+  font-size: 18px;
+  color: #0290ff;
+}

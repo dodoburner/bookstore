@@ -1,9 +1,24 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
   list-style-type: none;
-} */
+  font-family: 'Roboto Slab', serif;
+  box-sizing: border-box;
+}
 
-header {
-  display: flex;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+button {
+  cursor: pointer;
+}
+
+.categories {
+  margin: 1rem 6.25rem;
 }
