@@ -3,9 +3,19 @@
   padding: 0;
   list-style-type: none;
   font-family: 'Roboto Slab', serif;
+  box-sizing: border-box;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+body {
+  background-color: #fafafa;
+  background-color: rgb(223, 222, 222);
+}
+
+button {
+  cursor: pointer;
 }
