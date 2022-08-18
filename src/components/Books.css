@@ -69,9 +69,9 @@ main {
 .oval-2 {
   width: 4.25rem;
   height: 4.25rem;
-  border-style: solid;
-  border-width: 5px;
-  border-color: #e8e8e8;
+  border: 5px solid #307bbe;
+  border-left-color: #e8e8e8;
+  rotate: 45deg;
   border-radius: 50%;
   margin-right: 1.3rem;
 }

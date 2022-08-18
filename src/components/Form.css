@@ -1,5 +1,7 @@
 form {
   margin: 0 6.25rem 16rem 6.25rem;
+  border-top: solid 1px #e8e8e8;
+  padding-top: 1.8rem;
 }
 
 form h3 {

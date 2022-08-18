@@ -9,7 +9,9 @@ const Header = () => (
       <li><Link to="/">BOOKS</Link></li>
       <li><Link to="/Categories">CATEGORIES</Link></li>
     </ul>
-    <div className="oval" />
+    <div className="oval">
+      <i className="fa-solid fa-user" />
+    </div>
   </header>
 );
 
