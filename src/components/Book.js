@@ -4,13 +4,13 @@ import { useDispatch } from "react-redux";
 import { removeBook } from "../redux/books/books";
 import "./Books.css";
 
-const Book = ({ author, title, id }) => {
+const Book = ({ author, title, id, category }) => {
   const dispatch = useDispatch();
 
   return (
     <div className="book">
       <div className="book-info">
-        <span className="book-category">Category</span>
+        <span className="book-category">{category}</span>
         <h3 className="book-title">{title}</h3>
         <p className="book-author">{author}</p>
         <ul className="book-buttons">
@@ -60,6 +60,7 @@ Book.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
 };
 
 export default Book;

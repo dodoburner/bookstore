@@ -26,7 +26,7 @@ export const addBook = createAsyncThunk(
       item_id: book.id,
       title: book.title,
       author: book.author,
-      category: 'NAN',
+      category: book.category,
     });
     return {
       book: [
@@ -34,7 +34,7 @@ export const addBook = createAsyncThunk(
         [{
           author: book.author,
           title: book.title,
-          category: 'NAN',
+          category: book.category,
         }],
       ],
     };

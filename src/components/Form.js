@@ -11,11 +11,13 @@ const Form = () => {
     event.preventDefault();
     const title = document.getElementsByName("title")[0].value;
     const author = document.getElementsByName("author")[0].value;
+    const category = document.querySelector('select').value;
 
-    if (title.trim() && author.trim()) {
+    if (title.trim() && author.trim() && category) {
       const book = {
         title,
         author,
+        category,
         id: uuidv4(),
       };
 
@@ -32,7 +34,7 @@ const Form = () => {
         <input name="title" type="text" placeholder="Book title" />
         <input name="author" type="text" placeholder="Author" />
         <select>
-          <option>Select</option>
+          <option value="">Select</option>
           <option value="guide/how-to">Guide/How-to</option>
           <option value="fantasy">Fantasy</option>
           <option value="adventure">Adventure</option>

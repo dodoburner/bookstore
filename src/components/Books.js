@@ -15,6 +15,7 @@ const Books = () => {
             id={book[0]}
             author={book[1][0].author}
             title={book[1][0].title}
+            category={book[1][0].category}
           />
         ))}
       </main>
